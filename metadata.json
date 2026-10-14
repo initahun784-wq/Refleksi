@@ -1,0 +1,6 @@
+{
+  "name": "Ruang Refleksi & Demokrasi PPKn Kelas XI",
+  "description": "Platform refleksi jurnal mingguan PPKn dan forum diskusi interaktif topik demokrasi bagi siswa kelas 11 SMA/SMK.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
