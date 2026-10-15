@@ -8,6 +8,7 @@ import { ForumTab } from './components/ForumTab';
 import { PillarsTab } from './components/PillarsTab';
 import { TeacherDashboardTab } from './components/TeacherDashboardTab';
 import { StudentProfileModal } from './components/StudentProfileModal';
+import { TeacherAuthModal } from './components/TeacherAuthModal';
 
 import {
   INITIAL_STUDENTS,
@@ -83,6 +84,16 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<{ isTeacher: boolean; student?: Student }>(() => {
     return { isTeacher: false, student: INITIAL_STUDENTS[0] };
   });
+
+  // Teacher Security & Authentication (Secret Code: 11a1b13c)
+  const [isTeacherAuthenticated, setIsTeacherAuthenticated] = useState<boolean>(() => {
+    try {
+      return sessionStorage.getItem('ppkn_teacher_auth_11a1b13c') === 'true';
+    } catch (e) {
+      return false;
+    }
+  });
+  const [isTeacherAuthModalOpen, setIsTeacherAuthModalOpen] = useState<boolean>(false);
 
   // UI state
   const [activeTab, setActiveTab] = useState<'journals' | 'forum' | 'pillars' | 'teacher'>('journals');
@@ -339,31 +350,46 @@ export default function App() {
     showToast('Topik musyawarah baru berhasil dibuka.');
   };
 
+  // Actions: Teacher Authorization & Locking (Secret Code: 11a1b13c)
+  const handleTeacherAuthSuccess = () => {
+    setIsTeacherAuthenticated(true);
+    try {
+      sessionStorage.setItem('ppkn_teacher_auth_11a1b13c', 'true');
+    } catch (e) {}
+    setIsTeacherAuthModalOpen(false);
+    setCurrentUser({ isTeacher: true });
+    setActiveTab('teacher');
+    showToast('Kode terverifikasi! Selamat datang di Dashboard Guru, Bapak Jamal Akmalludin,S.Pd.');
+  };
+
+  const handleLockTeacher = () => {
+    setIsTeacherAuthenticated(false);
+    try {
+      sessionStorage.removeItem('ppkn_teacher_auth_11a1b13c');
+    } catch (e) {}
+    const defaultStudent = students[0] || INITIAL_STUDENTS[0];
+    setCurrentUser({ isTeacher: false, student: defaultStudent });
+    setActiveTab('journals');
+    showToast('Akses guru PPKn berhasil dikunci.');
+  };
+
   // Actions: User Switch
   const handleSwitchUser = (isTeacher: boolean, student?: Student) => {
-    setCurrentUser({ isTeacher, student });
     if (isTeacher) {
+      if (!isTeacherAuthenticated) {
+        setIsTeacherAuthModalOpen(true);
+        return;
+      }
+      setCurrentUser({ isTeacher: true });
       showToast('Beralih ke Mode Guru PPKn (Jamal Akmalludin,S.Pd).');
     } else if (student) {
+      setCurrentUser({ isTeacher: false, student });
       showToast(`Aktif sebagai ${student.name} (${student.classGroup}).`);
     }
   };
 
   const handleAddStudent = (newStudent: Student) => {
     setStudents([...students, newStudent]);
-  };
-
-  // Actions: Reset Student Data (Hapus Semua Jawaban Siswa)
-  const handleResetStudentData = () => {
-    setJournals([]);
-    setStudents(INITIAL_STUDENTS);
-    setTopics(INITIAL_TOPICS);
-    try {
-      localStorage.removeItem('ppkn_journals_xib_v4');
-      localStorage.removeItem('ppkn_students_xib_v4');
-      localStorage.removeItem('ppkn_topics_xib_v4');
-    } catch (e) {}
-    showToast('Seluruh jawaban jurnal dan skor siswa berhasil dihapus & dikosongkan.');
   };
 
   // Stats calculation
@@ -385,6 +411,9 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         currentUser={currentUser}
+        isTeacherAuthenticated={isTeacherAuthenticated}
+        onRequestTeacherAuth={() => setIsTeacherAuthModalOpen(true)}
+        onLockTeacher={handleLockTeacher}
         onOpenUploadModal={() => setIsUploadModalOpen(true)}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
       />
@@ -427,12 +456,14 @@ export default function App() {
           {activeTab === 'pillars' && <PillarsTab />}
 
           {activeTab === 'teacher' && (
-            <TeacherDashboardTab
-              students={students}
-              journals={journals}
-              onSelectJournal={(j) => setSelectedJournal(j)}
-              onResetStudentData={handleResetStudentData}
-            />
+            isTeacherAuthenticated ? (
+              <TeacherDashboardTab
+                students={students}
+                journals={journals}
+                onSelectJournal={(j) => setSelectedJournal(j)}
+                onLockTeacher={handleLockTeacher}
+              />
+            ) : null
           )}
         </div>
       </main>
@@ -459,8 +490,18 @@ export default function App() {
         onClose={() => setIsProfileModalOpen(false)}
         students={students}
         currentUser={currentUser}
+        isTeacherAuthenticated={isTeacherAuthenticated}
+        onRequestTeacherAuth={() => setIsTeacherAuthModalOpen(true)}
+        onLockTeacher={handleLockTeacher}
         onSwitchUser={handleSwitchUser}
         onAddStudent={handleAddStudent}
+      />
+
+      {/* Teacher Authentication Modal */}
+      <TeacherAuthModal
+        isOpen={isTeacherAuthModalOpen}
+        onClose={() => setIsTeacherAuthModalOpen(false)}
+        onSuccess={handleTeacherAuthSuccess}
       />
 
       {/* Clean Editorial Footer (Anti-slop compliant) */}

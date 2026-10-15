@@ -1,7 +1,7 @@
 /**
  * Types for PPKn Class 11 Reflection & Democracy Platform
  * Based on Buku Teks Utama Pendidikan Pancasila Kelas XI (Kemendikbudristek & BPIP 2023)
- * Penulis: Sri Cahyati, Siti Nurjanah, Ali Usman
+ * Penulis: Jamal Akmalludin,S.Pd
  */
 
 export interface Student {

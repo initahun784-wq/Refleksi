@@ -454,7 +454,7 @@ export const INITIAL_TOPICS: ForumTopic[] = [
     description: 'Sesuai Pasal 37 ayat (5) UUD 1945 dan Kesepakatan Dasar MPR (hlm. 54 buku teks), bentuk Negara Kesatuan Republik Indonesia tidak dapat dilakukan perubahan. Mengapa bentuk kesatuan dianggap paling tepat mewadahi kemajemukan bangsa Indonesia dibanding negara serikat (federal)?',
     caseStudy: 'Indonesia pernah mengalami bentuk Republik Indonesia Serikat (RIS) pada 27 Desember 1949 s.d. 17 Agustus 1950, namun tuntutan rakyat dari negara-negara bagian (dimulai dari Jawa Timur dan Pasundan) mendesak kembali ke Negara Kesatuan karena federalisme dipandang sebagai siasat pecah belah kolonial.',
     bookReference: 'Buku Teks Pendidikan Pancasila Kelas XI, Bab 2 hlm. 40-42 & 54',
-    authorName: 'Sri Cahyati, S.Pd., M.Pd (Penulis Buku)',
+    authorName: 'Jamal Akmalludin,S.Pd (Guru PPKn)',
     createdAt: '14 Oktober 2026',
     isPinned: false,
     comments: []

@@ -34,7 +34,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">
               Platform refleksi dan dialog kewarganegaraan berdasarkan <strong>Buku Teks Utama Pendidikan Pancasila Kelas XI</strong> karya 
-              Sri Cahyati, Siti Nurjanah, dan Ali Usman. Memadukan refleksi mingguan Model 4F dengan mimbar musyawarah deliberatif 
+              jamal Akmalludin,S. Pd. Memadukan refleksi mingguan Model 4F dengan mimbar musyawarah deliberatif 
               seputar dinamika UUD NRI Tahun 1945 di era keterbukaan informasi.
             </p>
 
@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-3 right-3 text-white pointer-events-none">
                 <p className="text-xs font-semibold tracking-wide text-blue-200">
-                  SMAN Unggulan Bangsa · Tahun Ajaran 2026/2027
+                  SMAN 2 Klari · Tahun Ajaran 2026/2027
                 </p>
                 <p className="text-sm font-medium leading-snug">
                   "Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan"

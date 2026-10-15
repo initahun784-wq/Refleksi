@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
-import { Award, Download, CheckCircle2, AlertCircle, FileSpreadsheet, Eye, Printer, Users, Search, Hash } from 'lucide-react';
+import { Award, Download, CheckCircle2, AlertCircle, FileSpreadsheet, Eye, Printer, Users, Search, Hash, Lock } from 'lucide-react';
 import { Student, JournalEntry } from '../types';
 
 interface TeacherDashboardTabProps {
   students: Student[];
   journals: JournalEntry[];
   onSelectJournal: (journal: JournalEntry) => void;
-  onResetStudentData?: () => void;
+  onLockTeacher?: () => void;
 }
 
 export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
   students,
   journals,
   onSelectJournal,
-  onResetStudentData,
+  onLockTeacher,
 }) => {
   const [selectedClass, setSelectedClass] = useState<'all' | 'XI-B'>('XI-B');
   const [searchStudent, setSearchStudent] = useState<string>('');
-  const [showConfirmReset, setShowConfirmReset] = useState<boolean>(false);
 
   const sortedStudents = [...students].sort(
     (a, b) => (a.absenNumber || 0) - (b.absenNumber || 0)
@@ -115,14 +114,14 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
         </div>
 
         <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
-          {onResetStudentData && (
+          {onLockTeacher && (
             <button
-              onClick={() => setShowConfirmReset(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs sm:text-sm font-semibold rounded-lg transition-colors cursor-pointer"
-              title="Hapus semua jawaban/jurnal yang dikirim oleh siswa"
+              onClick={onLockTeacher}
+              className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium rounded-lg transition-colors cursor-pointer border border-slate-300"
+              title="Kunci kembali akses Dashboard Guru"
             >
-              <AlertCircle className="w-4 h-4 text-rose-600" />
-              <span>Hapus Jawaban Siswa</span>
+              <Lock className="w-3.5 h-3.5 text-slate-500" />
+              <span>Kunci Akses</span>
             </button>
           )}
           <button
@@ -141,40 +140,6 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
           </button>
         </div>
       </div>
-
-      {/* Confirm Reset Dialog */}
-      {showConfirmReset && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-xl border border-slate-200 space-y-4">
-            <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
-              <AlertCircle className="w-6 h-6" />
-            </div>
-            <div className="text-center space-y-1">
-              <h3 className="text-base font-bold text-slate-900">Konfirmasi Hapus Jawaban Siswa</h3>
-              <p className="text-xs text-slate-600">
-                Apakah Anda yakin ingin menghapus seluruh jurnal refleksi mingguan dan reset skor yang ada pada siswa kelas XI-B? Data akan dikosongkan agar siswa dapat mengunggah jurnal baru dari awal.
-              </p>
-            </div>
-            <div className="flex items-center justify-end gap-3 pt-2">
-              <button
-                onClick={() => setShowConfirmReset(false)}
-                className="px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer transition-colors"
-              >
-                Batal
-              </button>
-              <button
-                onClick={() => {
-                  onResetStudentData?.();
-                  setShowConfirmReset(false);
-                }}
-                className="px-4 py-2 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-xs cursor-pointer transition-colors"
-              >
-                Ya, Hapus Semua Jawaban
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* KPI Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

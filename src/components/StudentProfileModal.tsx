@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, UserCheck, GraduationCap, Plus, Check, Search, Hash } from 'lucide-react';
+import { X, UserCheck, GraduationCap, Plus, Check, Search, Hash, Lock } from 'lucide-react';
 import { Student } from '../types';
 
 interface StudentProfileModalProps {
@@ -7,6 +7,9 @@ interface StudentProfileModalProps {
   onClose: () => void;
   students: Student[];
   currentUser: { isTeacher: boolean; student?: Student };
+  isTeacherAuthenticated: boolean;
+  onRequestTeacherAuth: () => void;
+  onLockTeacher?: () => void;
   onSwitchUser: (isTeacher: boolean, student?: Student) => void;
   onAddStudent: (newStudent: Student) => void;
 }
@@ -16,6 +19,9 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
   onClose,
   students,
   currentUser,
+  isTeacherAuthenticated,
+  onRequestTeacherAuth,
+  onLockTeacher,
   onSwitchUser,
   onAddStudent,
 }) => {
@@ -85,12 +91,19 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
           {/* Mode Guru Switch */}
           <div>
             <span className="text-2xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-              Peran Pendidik / Guru
+              Peran Pendidik / Guru (Dilindungi Kode)
             </span>
-            <button
+            <div
               onClick={() => {
-                onSwitchUser(true);
-                onClose();
+                if (currentUser.isTeacher) {
+                  onClose();
+                } else if (isTeacherAuthenticated) {
+                  onSwitchUser(true);
+                  onClose();
+                } else {
+                  onClose();
+                  onRequestTeacherAuth();
+                }
               }}
               className={`w-full flex items-center justify-between p-3 rounded-lg border text-left transition-all cursor-pointer ${
                 currentUser.isTeacher
@@ -107,8 +120,32 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
                   <p className="text-2xs text-slate-500">Guru PPKn Kelas XI-B · Akses Rubrik Penilaian Portofolio</p>
                 </div>
               </div>
-              {currentUser.isTeacher && <Check className="w-4 h-4 text-blue-700 shrink-0" />}
-            </button>
+              
+              {currentUser.isTeacher ? (
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1 text-2xs text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded font-semibold">
+                    <Check className="w-3 h-3" /> Sedang Aktif
+                  </span>
+                  {onLockTeacher && (
+                    <button
+                      onClick={onLockTeacher}
+                      title="Kunci Akses Guru"
+                      className="inline-flex items-center gap-1 px-2 py-0.5 text-2xs font-medium text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded transition-colors"
+                    >
+                      <Lock className="w-3 h-3" /> Kunci Akses
+                    </button>
+                  )}
+                </div>
+              ) : isTeacherAuthenticated ? (
+                <span className="text-2xs text-blue-700 font-semibold bg-blue-50 px-2 py-0.5 rounded">
+                  Terbuka
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 text-2xs text-amber-700 bg-amber-50 px-2 py-0.5 rounded font-medium border border-amber-200">
+                  <Lock className="w-3 h-3 text-amber-600" /> Perlu Kode
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Student Search and Count */}
