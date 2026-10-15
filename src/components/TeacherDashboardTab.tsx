@@ -6,15 +6,18 @@ interface TeacherDashboardTabProps {
   students: Student[];
   journals: JournalEntry[];
   onSelectJournal: (journal: JournalEntry) => void;
+  onResetStudentData?: () => void;
 }
 
 export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
   students,
   journals,
   onSelectJournal,
+  onResetStudentData,
 }) => {
   const [selectedClass, setSelectedClass] = useState<'all' | 'XI-B'>('XI-B');
   const [searchStudent, setSearchStudent] = useState<string>('');
+  const [showConfirmReset, setShowConfirmReset] = useState<boolean>(false);
 
   const sortedStudents = [...students].sort(
     (a, b) => (a.absenNumber || 0) - (b.absenNumber || 0)
@@ -47,7 +50,7 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
 
   const kkmPassingCount = gradedJournals.filter((j) => (j.score || 0) >= 75).length;
   const kkmRate =
-    gradedJournals.length > 0 ? Math.round((kkmPassingCount / gradedJournals.length) * 100) : 100;
+    gradedJournals.length > 0 ? Math.round((kkmPassingCount / gradedJournals.length) * 100) : 0;
 
   // Export to CSV function
   const handleExportCSV = () => {
@@ -62,7 +65,7 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
       'Topik Refleksi',
       'Status',
       'Nilai (Tabel 2.4)',
-      'Feedback Guru',
+      'Feedback Guru (Jamal Akmalludin,S.Pd)',
     ];
     const rows = filteredJournals.map((j) => {
       const studentObj = students.find((s) => s.id === j.studentId);
@@ -101,17 +104,27 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
           <div className="text-xs font-semibold text-blue-800 tracking-wide mb-1">
             <span>ASESMEN PORTOFOLIO KELAS XI-B</span>
             <span className="mx-2" aria-hidden="true">·</span>
-            <span>BUKU PENDIDIKAN PANCASILA KELAS XI (KEMENDIKBUDRISTEK 2023)</span>
+            <span>GURU PENGAMPU: JAMAL AKMALLUDIN,S.PD</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             Dashboard Penilaian Portofolio Guru PPKn
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-            Daftar 41 Peserta Didik Kelas XI-B, progres pengumpulan jurnal mingguan model 4F, dan rubrik bernalar kritis (Tabel 2.4).
+            Guru: <strong className="text-slate-800">Jamal Akmalludin,S.Pd</strong> · Daftar 41 Peserta Didik Kelas XI-B, pemantauan pengunggahan jurnal model 4F, dan rubrik bernalar kritis (Tabel 2.4).
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto">
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+          {onResetStudentData && (
+            <button
+              onClick={() => setShowConfirmReset(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs sm:text-sm font-semibold rounded-lg transition-colors cursor-pointer"
+              title="Hapus semua jawaban/jurnal yang dikirim oleh siswa"
+            >
+              <AlertCircle className="w-4 h-4 text-rose-600" />
+              <span>Hapus Jawaban Siswa</span>
+            </button>
+          )}
           <button
             onClick={handleExportCSV}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold rounded-lg shadow-xs transition-colors cursor-pointer"
@@ -128,6 +141,40 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Confirm Reset Dialog */}
+      {showConfirmReset && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-xl border border-slate-200 space-y-4">
+            <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
+              <AlertCircle className="w-6 h-6" />
+            </div>
+            <div className="text-center space-y-1">
+              <h3 className="text-base font-bold text-slate-900">Konfirmasi Hapus Jawaban Siswa</h3>
+              <p className="text-xs text-slate-600">
+                Apakah Anda yakin ingin menghapus seluruh jurnal refleksi mingguan dan reset skor yang ada pada siswa kelas XI-B? Data akan dikosongkan agar siswa dapat mengunggah jurnal baru dari awal.
+              </p>
+            </div>
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                onClick={() => setShowConfirmReset(false)}
+                className="px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer transition-colors"
+              >
+                Batal
+              </button>
+              <button
+                onClick={() => {
+                  onResetStudentData?.();
+                  setShowConfirmReset(false);
+                }}
+                className="px-4 py-2 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-xs cursor-pointer transition-colors"
+              >
+                Ya, Hapus Semua Jawaban
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* KPI Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

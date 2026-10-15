@@ -103,7 +103,7 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-slate-900">Drs. Supriyanto, M.Pd</p>
+                  <p className="text-xs font-bold text-slate-900">Jamal Akmalludin,S.Pd</p>
                   <p className="text-2xs text-slate-500">Guru PPKn Kelas XI-B · Akses Rubrik Penilaian Portofolio</p>
                 </div>
               </div>

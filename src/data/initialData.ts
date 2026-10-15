@@ -8,8 +8,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230001',
     classGroup: 'XI-B',
     avatarColor: 'bg-blue-600',
-    submittedCount: 6,
-    averageScore: 95,
+    submittedCount: 0,
   },
   {
     id: 'std-2',
@@ -18,8 +17,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230002',
     classGroup: 'XI-B',
     avatarColor: 'bg-emerald-600',
-    submittedCount: 5,
-    averageScore: 88,
+    submittedCount: 0,
   },
   {
     id: 'std-3',
@@ -28,8 +26,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230003',
     classGroup: 'XI-B',
     avatarColor: 'bg-rose-600',
-    submittedCount: 6,
-    averageScore: 94,
+    submittedCount: 0,
   },
   {
     id: 'std-4',
@@ -38,8 +35,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230004',
     classGroup: 'XI-B',
     avatarColor: 'bg-indigo-600',
-    submittedCount: 5,
-    averageScore: 90,
+    submittedCount: 0,
   },
   {
     id: 'std-5',
@@ -48,8 +44,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230005',
     classGroup: 'XI-B',
     avatarColor: 'bg-amber-600',
-    submittedCount: 5,
-    averageScore: 89,
+    submittedCount: 0,
   },
   {
     id: 'std-6',
@@ -58,8 +53,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230006',
     classGroup: 'XI-B',
     avatarColor: 'bg-purple-600',
-    submittedCount: 6,
-    averageScore: 93,
+    submittedCount: 0,
   },
   {
     id: 'std-7',
@@ -68,8 +62,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230007',
     classGroup: 'XI-B',
     avatarColor: 'bg-pink-600',
-    submittedCount: 5,
-    averageScore: 91,
+    submittedCount: 0,
   },
   {
     id: 'std-8',
@@ -78,8 +71,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230008',
     classGroup: 'XI-B',
     avatarColor: 'bg-teal-600',
-    submittedCount: 6,
-    averageScore: 96,
+    submittedCount: 0,
   },
   {
     id: 'std-9',
@@ -88,8 +80,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230009',
     classGroup: 'XI-B',
     avatarColor: 'bg-violet-600',
-    submittedCount: 5,
-    averageScore: 89,
+    submittedCount: 0,
   },
   {
     id: 'std-10',
@@ -98,8 +89,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230010',
     classGroup: 'XI-B',
     avatarColor: 'bg-cyan-600',
-    submittedCount: 5,
-    averageScore: 90,
+    submittedCount: 0,
   },
   {
     id: 'std-11',
@@ -108,8 +98,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230011',
     classGroup: 'XI-B',
     avatarColor: 'bg-blue-600',
-    submittedCount: 5,
-    averageScore: 87,
+    submittedCount: 0,
   },
   {
     id: 'std-12',
@@ -118,8 +107,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230012',
     classGroup: 'XI-B',
     avatarColor: 'bg-emerald-600',
-    submittedCount: 6,
-    averageScore: 92,
+    submittedCount: 0,
   },
   {
     id: 'std-13',
@@ -128,8 +116,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230013',
     classGroup: 'XI-B',
     avatarColor: 'bg-rose-600',
-    submittedCount: 5,
-    averageScore: 89,
+    submittedCount: 0,
   },
   {
     id: 'std-14',
@@ -138,8 +125,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230014',
     classGroup: 'XI-B',
     avatarColor: 'bg-indigo-600',
-    submittedCount: 6,
-    averageScore: 94,
+    submittedCount: 0,
   },
   {
     id: 'std-15',
@@ -148,8 +134,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230015',
     classGroup: 'XI-B',
     avatarColor: 'bg-amber-600',
-    submittedCount: 5,
-    averageScore: 88,
+    submittedCount: 0,
   },
   {
     id: 'std-16',
@@ -158,8 +143,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230016',
     classGroup: 'XI-B',
     avatarColor: 'bg-purple-600',
-    submittedCount: 6,
-    averageScore: 91,
+    submittedCount: 0,
   },
   {
     id: 'std-17',
@@ -168,8 +152,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230017',
     classGroup: 'XI-B',
     avatarColor: 'bg-teal-600',
-    submittedCount: 5,
-    averageScore: 90,
+    submittedCount: 0,
   },
   {
     id: 'std-18',
@@ -178,8 +161,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230018',
     classGroup: 'XI-B',
     avatarColor: 'bg-blue-600',
-    submittedCount: 6,
-    averageScore: 93,
+    submittedCount: 0,
   },
   {
     id: 'std-19',
@@ -188,8 +170,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230019',
     classGroup: 'XI-B',
     avatarColor: 'bg-rose-600',
-    submittedCount: 5,
-    averageScore: 92,
+    submittedCount: 0,
   },
   {
     id: 'std-20',
@@ -198,8 +179,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230020',
     classGroup: 'XI-B',
     avatarColor: 'bg-emerald-600',
-    submittedCount: 6,
-    averageScore: 94,
+    submittedCount: 0,
   },
   {
     id: 'std-21',
@@ -208,8 +188,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230021',
     classGroup: 'XI-B',
     avatarColor: 'bg-violet-600',
-    submittedCount: 5,
-    averageScore: 90,
+    submittedCount: 0,
   },
   {
     id: 'std-22',
@@ -218,8 +197,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230022',
     classGroup: 'XI-B',
     avatarColor: 'bg-indigo-600',
-    submittedCount: 5,
-    averageScore: 89,
+    submittedCount: 0,
   },
   {
     id: 'std-23',
@@ -228,8 +206,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230023',
     classGroup: 'XI-B',
     avatarColor: 'bg-cyan-600',
-    submittedCount: 6,
-    averageScore: 95,
+    submittedCount: 0,
   },
   {
     id: 'std-24',
@@ -238,8 +215,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230024',
     classGroup: 'XI-B',
     avatarColor: 'bg-pink-600',
-    submittedCount: 5,
-    averageScore: 91,
+    submittedCount: 0,
   },
   {
     id: 'std-25',
@@ -248,8 +224,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230025',
     classGroup: 'XI-B',
     avatarColor: 'bg-amber-600',
-    submittedCount: 5,
-    averageScore: 89,
+    submittedCount: 0,
   },
   {
     id: 'std-26',
@@ -258,8 +233,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230026',
     classGroup: 'XI-B',
     avatarColor: 'bg-blue-600',
-    submittedCount: 6,
-    averageScore: 92,
+    submittedCount: 0,
   },
   {
     id: 'std-27',
@@ -268,8 +242,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230027',
     classGroup: 'XI-B',
     avatarColor: 'bg-teal-600',
-    submittedCount: 5,
-    averageScore: 90,
+    submittedCount: 0,
   },
   {
     id: 'std-28',
@@ -278,8 +251,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230028',
     classGroup: 'XI-B',
     avatarColor: 'bg-rose-600',
-    submittedCount: 5,
-    averageScore: 88,
+    submittedCount: 0,
   },
   {
     id: 'std-29',
@@ -288,8 +260,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230029',
     classGroup: 'XI-B',
     avatarColor: 'bg-purple-600',
-    submittedCount: 6,
-    averageScore: 93,
+    submittedCount: 0,
   },
   {
     id: 'std-30',
@@ -298,8 +269,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230030',
     classGroup: 'XI-B',
     avatarColor: 'bg-emerald-600',
-    submittedCount: 5,
-    averageScore: 91,
+    submittedCount: 0,
   },
   {
     id: 'std-31',
@@ -308,8 +278,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230031',
     classGroup: 'XI-B',
     avatarColor: 'bg-violet-600',
-    submittedCount: 6,
-    averageScore: 96,
+    submittedCount: 0,
   },
   {
     id: 'std-32',
@@ -318,8 +287,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230032',
     classGroup: 'XI-B',
     avatarColor: 'bg-blue-600',
-    submittedCount: 5,
-    averageScore: 89,
+    submittedCount: 0,
   },
   {
     id: 'std-33',
@@ -328,8 +296,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230033',
     classGroup: 'XI-B',
     avatarColor: 'bg-pink-600',
-    submittedCount: 5,
-    averageScore: 90,
+    submittedCount: 0,
   },
   {
     id: 'std-34',
@@ -338,8 +305,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230034',
     classGroup: 'XI-B',
     avatarColor: 'bg-indigo-600',
-    submittedCount: 6,
-    averageScore: 92,
+    submittedCount: 0,
   },
   {
     id: 'std-35',
@@ -348,8 +314,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230035',
     classGroup: 'XI-B',
     avatarColor: 'bg-teal-600',
-    submittedCount: 5,
-    averageScore: 89,
+    submittedCount: 0,
   },
   {
     id: 'std-36',
@@ -358,8 +323,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230036',
     classGroup: 'XI-B',
     avatarColor: 'bg-amber-600',
-    submittedCount: 6,
-    averageScore: 94,
+    submittedCount: 0,
   },
   {
     id: 'std-37',
@@ -368,8 +332,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230037',
     classGroup: 'XI-B',
     avatarColor: 'bg-blue-600',
-    submittedCount: 6,
-    averageScore: 95,
+    submittedCount: 0,
   },
   {
     id: 'std-38',
@@ -378,8 +341,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230038',
     classGroup: 'XI-B',
     avatarColor: 'bg-purple-600',
-    submittedCount: 5,
-    averageScore: 91,
+    submittedCount: 0,
   },
   {
     id: 'std-39',
@@ -388,8 +350,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230039',
     classGroup: 'XI-B',
     avatarColor: 'bg-emerald-600',
-    submittedCount: 5,
-    averageScore: 88,
+    submittedCount: 0,
   },
   {
     id: 'std-40',
@@ -398,8 +359,7 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230040',
     classGroup: 'XI-B',
     avatarColor: 'bg-rose-600',
-    submittedCount: 6,
-    averageScore: 92,
+    submittedCount: 0,
   },
   {
     id: 'std-41',
@@ -408,138 +368,21 @@ export const INITIAL_STUDENTS: Student[] = [
     nisn: '0081230041',
     classGroup: 'XI-B',
     avatarColor: 'bg-cyan-600',
-    submittedCount: 6,
-    averageScore: 94,
+    submittedCount: 0,
   },
 ];
 
-export const INITIAL_JOURNALS: JournalEntry[] = [
-  {
-    id: 'jnl-1',
-    weekNumber: 5,
-    date: '10 Oktober 2026',
-    studentId: 'std-1',
-    studentName: 'AL FATHIR FAHREZI PUTRA WIGUNA',
-    classGroup: 'XI-B',
-    chapter: 'Bab 2',
-    activityRef: 'Aktivitas 2.1 & 2.7 (Buku hlm. 35 & 57)',
-    topicTitle: 'Praktik Demokrasi Musyawarah Versi Indonesia: Menghindari Demokrasi "50% + 1"',
-    reflection: {
-      facts: 'Pada pembelajaran Bab 2 Pendidikan Pancasila di kelas XI-B, kami mendiskusikan konsep demokrasi musyawarah versi Indonesia yang mengakar dari kearifan lokal desa seperti rembug desa (Jawa), tudang sipulung (Sulsel), dan kerapatan adat nagari (Sumbar) sebagaimana dijelaskan Bung Hatta. Kami juga membedah teori demokrasi konsensus Munir Fuady (2010) yang lebih menekankan merangkul daripada memusuhi, berbeda dengan demokrasi mayoritas 50% plus satu.',
-      feelings: 'Saya merasa tercerahkan dan tersadar bahwa selama ini kami di kelas sering terburu-buru melakukan voting tanpa mau bersabar mendengarkan teman. Ada rasa bangga bahwa para pendiri bangsa kita telah merancang sistem permusyawaratan yang beradab dan tidak membelah masyarakat menjadi pemenang dan pihak yang dikalahkan.',
-      findings: 'Esensi kedaulatan rakyat dalam Pasal 1 ayat (2) UUD NRI 1945 dan Sila ke-4 adalah hikmat kebijaksanaan. Demokrasi Pancasila bukan sekadar menang-menangan suara elektoral, melainkan seni mencapai kesepakatan bulat yang menjamin kemaslahatan bersama dan melindungi hak seluruh golongan.',
-      future: 'Dalam rapat OSIS dan kepengurusan kelas XI-B pekan depan, saya berkomitmen memfasilitasi dialog hingga tercapai mufakat, tidak memotong pembicaraan orang lain (sesuai butir ke-9 Tabel 2.5), serta menerima keputusan rapat dengan lapang dada meskipun berbeda dengan usulan awal saya.'
-    },
-    relatedSila: [4, 2, 3],
-    attachmentName: 'ringkasan_teori_demokrasi_konsensus.pdf',
-    status: 'graded',
-    score: 95,
-    rubric: {
-      memprosesInformasi: 4,
-      menganalisisInformasi: 4,
-      refleksiPemikiran: 4,
-      mengambilKesimpulan: 4,
-    },
-    teacherFeedback: 'Refleksi sangat mendalam dan kontekstual! Analisis perbandingan antara demokrasi konsensus Munir Fuady dengan rembug desa menunjukkan kecakapan bernalar kritis yang tinggi sesuai Alur Gambar 2.9 Buku Teks.',
-    teacherFeedbackDate: '11 Oktober 2026',
-  },
-  {
-    id: 'jnl-2',
-    weekNumber: 5,
-    date: '09 Oktober 2026',
-    studentId: 'std-3',
-    studentName: 'AQILAH OCTA KURNIA PUTRI',
-    classGroup: 'XI-B',
-    chapter: 'Bab 2',
-    activityRef: 'Aktivitas 2.8 (Buku hlm. 61-62)',
-    topicTitle: 'Meme dan Mural sebagai Media Kritik: Batas Kebebasan Berpendapat Pasal 28 & 28E ayat (3)',
-    reflection: {
-      facts: 'Kami mengamati Gambar 2.8 di Buku Teks tentang mural "Meski Kita Berbeda Suara Persatuan Tetap Dijaga" dan mendiskusikan meme di media sosial sebagai alat kritik sosial generasi muda terhadap kinerja pemerintah atau aturan sekolah.',
-      feelings: 'Saya merasa tertantang untuk bersikap adil. Di satu sisi, seni mural dan meme adalah sarana ekspresi yang lugas dan kreatif bagi anak muda. Di sisi lain, saya khawatir jika meme bergeser menjadi ajang doxxing atau ujaran kebencian tanpa dasar fakta yang jelas.',
-      findings: 'Pasal 28 dan Pasal 28E ayat (3) UUD NRI 1945 menjamin kemerdekaan mengeluarkan pikiran dan pendapat. Namun buku ini menegaskan bahwa kebebasan di Indonesia adalah kebebasan yang bertanggung jawab—yaitu dibatasi oleh aturan hukum dan hak orang lain, disampaikan dengan bahasa santun, tidak menyerang pribadi, dan berdasar argumen yang kuat.',
-      future: 'Saya akan menerapkan budaya saring sebelum sharing di ruang digital. Saat membuat konten kritik atau poster mading sekolah, saya akan memastikan isi pesan mengedukasi dan mengutamakan persatuan bangsa, bukan memicu polarisasi kebencian.'
-    },
-    relatedSila: [2, 4],
-    attachmentName: 'infografis_mural_dan_etika_digital.png',
-    status: 'graded',
-    score: 92,
-    rubric: {
-      memprosesInformasi: 4,
-      menganalisisInformasi: 3,
-      refleksiPemikiran: 4,
-      mengambilKesimpulan: 4,
-    },
-    teacherFeedback: 'Aqilah telah menerapkan penalaran kritis yang sangat baik dalam membedakan antara kritik bernilai edukatif dengan ujaran kebencian. Sangat selaras dengan amanat Subbab C Buku Teks hlm. 57-58.',
-    teacherFeedbackDate: '11 Oktober 2026',
-  },
-  {
-    id: 'jnl-3',
-    weekNumber: 4,
-    date: '03 Oktober 2026',
-    studentId: 'std-14',
-    studentName: 'FAIZAL AKBAR NUR ALAMSYAH',
-    classGroup: 'XI-B',
-    chapter: 'Bab 2',
-    activityRef: 'Aktivitas 2.3 & 2.6 (Buku hlm. 46 & 51)',
-    topicTitle: 'Analisis 5 Kesepakatan Dasar MPR dalam Amandemen UUD NRI 1945',
-    reflection: {
-      facts: 'Materi pekan ke-4 mengkaji empat tahapan amandemen UUD NRI Tahun 1945 (1999-2002) dan lima kesepakatan dasar MPR (hlm. 54 buku teks), yaitu: tidak mengubah Pembukaan, mempertahankan NKRI, mempertegas sistem presidensial, memasukkan penjelasan ke pasal-pasal, dan melakukan perubahan secara adendum.',
-      feelings: 'Saya takjub memahami kecerdasan para negarawan reformasi. Amandemen dilakukan tanpa merusak fondasi pokok filosofis negara yang tertuang dalam Pembukaan UUD 1945.',
-      findings: 'Sistem checks and balances yang lahir setelah amandemen Pasal 1 ayat (2) menggeser kedaulatan subjektif MPR menjadi kedaulatan objektif hukum menurut UUD. Ini mencegah terulangnya kekuasaan eksekutif yang absolut tanpa kontrol seperti di masa lalu.',
-      future: 'Saya akan membuat bagan perbandingan struktur lembaga negara pra dan pasca amandemen untuk kelompok belajar, serta menerapkan prinsip check and balance dalam pembagian tugas organisasi kesiswaan.'
-    },
-    relatedSila: [4, 5],
-    status: 'graded',
-    score: 95,
-    rubric: {
-      memprosesInformasi: 4,
-      menganalisisInformasi: 4,
-      refleksiPemikiran: 4,
-      mengambilKesimpulan: 4,
-    },
-    teacherFeedback: 'Analisis mengenai pergeseran dari kedaulatan subjektif ke kedaulatan objektif hukum (Rule of Law Pasal 1 ayat 3) sangat akurat mengutip naskah komprehensif MPR.',
-    teacherFeedbackDate: '05 Oktober 2026',
-  },
-  {
-    id: 'jnl-4',
-    weekNumber: 6,
-    date: '12 Oktober 2026',
-    studentId: 'std-23',
-    studentName: 'LIDIA ARNETA MARPAUNG',
-    classGroup: 'XI-B',
-    chapter: 'Bab 2',
-    activityRef: 'Aktivitas 2.7 & EIU Report (Buku hlm. 56)',
-    topicTitle: 'Refleksi Skor Indeks Demokrasi Indonesia 6,71 (EIU): Refleksi Budaya Politik Generasi Muda',
-    reflection: {
-      facts: 'Kami menganalisis data riset Economist Intelligence Unit (EIU) 2022 pada halaman 56 buku, di mana Indonesia meraih skor 6,71 dan berada dalam kategori flawed democracy (demokrasi lemah) dengan kelemahan utama pada indikator budaya politik dan kebebasan sipil.',
-      feelings: 'Merasa prihatin namun termotivasi. Data ini menjadi cermin jujur bahwa demokrasi bukan hanya soal terselenggaranya pemilu formal, tetapi sejauh mana masyarakat saling menghargai keberadaan sesama tanpa intimidasi.',
-      findings: 'Definisi demokratis menurut Mustari (2014) dalam buku adalah cara berpikir, bersikap, dan bertindak yang menilai sama hak dan kewajiban dirinya dan orang lain. Sikap ini harus dilatih melalui pembiasaan sejak di bangku sekolah.',
-      future: 'Saya akan aktif mengisi instrumen Tabel 2.5 secara jujur setiap akhir pekan untuk mengevaluasi apakah saya sudah memberi kesempatan teman lain berpendapat dan tidak memaksakan kehendak.'
-    },
-    relatedSila: [2, 3, 4],
-    status: 'submitted',
-  },
-  {
-    id: 'jnl-5',
-    weekNumber: 6,
-    date: '13 Oktober 2026',
-    studentId: 'std-37',
-    studentName: 'SERGIO ALVAREZ MARBUN',
-    classGroup: 'XI-B',
-    chapter: 'Bab 1',
-    activityRef: 'Aktivitas 1.14 & 1.15 (Buku hlm. 27-28)',
-    topicTitle: 'Pancasila sebagai Meja Statis dan Leitstar Dinamis dalam Kehidupan Siswa',
-    reflection: {
-      facts: 'Mempelajari pidato Presiden Soekarno mengenai Pancasila sebagai meja statis yang mempertemukan keberagaman suku bangsa, serta leitstar dinamis (bintang penuntun) yang luwes dan adaptif terhadap perkembangan ilmu pengetahuan dan zaman.',
-      feelings: 'Bangga menjadi generasi muda Indonesia karena memiliki dasar negara yang tidak kaku, mampu merespons era kecerdasan buatan dan globalisasi tanpa kehilangan jati diri kebangsaan.',
-      findings: 'Pancasila sebagai bintang penuntun membimbing kita agar kemajuan teknologi informasi tidak membuat kita tercerabut dari nilai ketuhanan, kemanusiaan yang adil dan beradab, serta gotong royong.',
-      future: 'Mengembangkan konten edukasi video pendek tentang penerapan nilai-nilai Pancasila di lingkungan sekolah dan mengajak teman-teman menolak ujaran kebencian di grup media sosial.'
-    },
-    relatedSila: [1, 3, 5],
-    status: 'submitted',
-  }
-];
+/**
+ * Daftar Jurnal Refleksi Siswa Awal
+ * Dikosongkan agar siswa kelas XI-B dapat mengunggah jawaban jurnal secara mandiri
+ */
+export const INITIAL_JOURNALS: JournalEntry[] = [];
 
+/**
+ * Topik Diskusi Interaktif Forum Demokrasi
+ * Disiapkan oleh guru PPKn Jamal Akmalludin,S.Pd dan referensi buku teks
+ * Jawaban/komentar siswa dibersihkan agar siswa dapat mengisi argumen mereka sendiri
+ */
 export const INITIAL_TOPICS: ForumTopic[] = [
   {
     id: 'tpc-1',
@@ -549,71 +392,22 @@ export const INITIAL_TOPICS: ForumTopic[] = [
     description: 'Berdasarkan data Economist Intelligence Unit (EIU) di Buku Teks halaman 56, Indonesia meraih skor 6,71 dan tergolong demokrasi lemah (flawed democracy) akibat penurunan nilai budaya politik yang demokratis (4,38) dan kebebasan sipil (6,18). Apa akar penyebabnya di era medsos dan bagaimana siswa SMA dapat memperbaikinya?',
     caseStudy: 'Dalam 12 tahun terakhir, EIU mencatat tren naik-turun indeks demokrasi Indonesia. Penurunan terdalam terjadi pada indikator budaya politik dan kebebasan sipil, di mana masyarakat rentan terpolarisasi dan saling serang di media sosial saat berbeda pilihan politik.',
     bookReference: 'Buku Teks Pendidikan Pancasila Kelas XI, Bab 2 Subbab C, Halaman 56-57',
-    authorName: 'Drs. Supriyanto, M.Pd (Guru PPKn)',
-    createdAt: '08 Oktober 2026',
+    authorName: 'Jamal Akmalludin,S.Pd (Guru PPKn)',
+    createdAt: '14 Oktober 2026',
     isPinned: true,
     poll: {
       id: 'poll-1',
       question: 'Dari 5 indikator negara demokrasi (Affan Gaffar / EIU), sektor mana yang paling mendesak dibenahi oleh pelajar kelas 11?',
       options: [
-        { id: 'opt-1', text: 'Budaya santun berpendapat & menghargai perbedaan di medsos', votes: 54 },
-        { id: 'opt-2', text: 'Pendidikan literasi menangkal berita bohong / hoaks politik', votes: 38 },
-        { id: 'opt-3', text: 'Partisipasi kritis pemilih pemula menolak politik uang', votes: 29 },
-        { id: 'opt-4', text: 'Akuntabilitas pengurus organisasi kesiswaan / MPK / OSIS', votes: 16 },
+        { id: 'opt-1', text: 'Budaya santun berpendapat & menghargai perbedaan di medsos', votes: 0 },
+        { id: 'opt-2', text: 'Pendidikan literasi menangkal berita bohong / hoaks politik', votes: 0 },
+        { id: 'opt-3', text: 'Partisipasi kritis pemilih pemula menolak politik uang', votes: 0 },
+        { id: 'opt-4', text: 'Akuntabilitas pengurus organisasi kesiswaan / MPK / OSIS', votes: 0 },
       ],
-      totalVotes: 137,
-      voterIds: ['std-1', 'std-3'],
+      totalVotes: 0,
+      voterIds: [],
     },
-    comments: [
-      {
-        id: 'cmt-1',
-        authorId: 'std-1',
-        authorName: 'AL FATHIR FAHREZI PUTRA WIGUNA',
-        authorRole: 'siswa',
-        classGroup: 'XI-B',
-        stance: 'solutif',
-        content: 'Merujuk pada penjelasan Mustari (2014) di buku kita, sikap demokratis adalah proses panjang pembiasaan. Indeks budaya politik kita rendah (4,38) karena masyarakat kita di internet masih mudah emosi saat berbeda argumen. Langkah awal kita sebagai siswa kelas XI-B adalah membiasakan 10 perilaku demokratis dari Tabel 2.5 buku, terutama tidak memotong pembicaraan orang dan tidak menyerang pribadi (ad hominem).',
-        createdAt: '09 Oktober 2026',
-        likes: 18,
-        likedBy: ['std-2', 'std-3', 'std-4'],
-        replies: [
-          {
-            id: 'rpl-1',
-            authorId: 'std-3',
-            authorName: 'AQILAH OCTA KURNIA PUTRI',
-            authorRole: 'siswa',
-            classGroup: 'XI-B',
-            content: 'Tepat sekali Fathir! Ditambah lagi alur bernalar kritis di Gambar 2.9 (hlm. 60): kita harus memproses informasi kualitatif dan kuantitatif secara objektif dulu sebelum mengetik komentar di medsos.',
-            createdAt: '09 Oktober 2026',
-            likes: 9,
-            likedBy: ['std-1'],
-          },
-          {
-            id: 'rpl-2',
-            authorId: 'tch-1',
-            authorName: 'Drs. Supriyanto, M.Pd (Guru PPKn)',
-            authorRole: 'guru',
-            content: 'Analisis yang sangat komprehensif dari Fathir dan Aqilah. Mengaitkan data EIU hlm. 56 dengan Tabel 2.5 membuktikan pemahaman konseptual yang matang.',
-            createdAt: '10 Oktober 2026',
-            likes: 15,
-            likedBy: ['std-1', 'std-2', 'std-3'],
-          }
-        ]
-      },
-      {
-        id: 'cmt-2',
-        authorId: 'std-14',
-        authorName: 'FAIZAL AKBAR NUR ALAMSYAH',
-        authorRole: 'siswa',
-        classGroup: 'XI-B',
-        stance: 'kontra',
-        content: 'Saya menyoroti poin kebebasan sipil (6,18). Banyak pemuda yang takut bersuara kritis karena bayang-bayang kriminalisasi UU ITE. Padahal Pasal 28 UUD NRI 1945 tegas melindungi kemerdekaan berserikat, berkumpul, dan mengeluarkan pikiran. Negara harus memastikan penegakan hukum (Rule of Law) benar-benar adil dan tidak tebang pilih sesuai prinsip Affan Gaffar.',
-        createdAt: '10 Oktober 2026',
-        likes: 21,
-        likedBy: ['std-1', 'std-4', 'std-5'],
-        replies: []
-      }
-    ]
+    comments: []
   },
   {
     id: 'tpc-2',
@@ -624,34 +418,20 @@ export const INITIAL_TOPICS: ForumTopic[] = [
     caseStudy: 'Meme dan mural merupakan ekspresi para seniman dalam menyampaikan pesan terhadap kepuasan kinerja pemerintah atau elite politik. Pesan singkat dan langsung pada intinya dianggap media yang efektif menarik perhatian publik, namun sebagian pihak menganggapnya merusak keindahan kota jika dibuat di fasilitas umum tanpa izin.',
     bookReference: 'Buku Teks Pendidikan Pancasila Kelas XI, Bab 2 Subbab C, Halaman 57-58',
     authorName: 'Siti Nurjanah, S.Pd., M.Pd (Penulis Buku)',
-    createdAt: '11 Oktober 2026',
+    createdAt: '14 Oktober 2026',
     isPinned: false,
     poll: {
       id: 'poll-2',
       question: 'Bagaimana penilaian kalian terhadap kritik sosial lewat meme dan mural di tempat umum?',
       options: [
-        { id: 'opt-21', text: 'Bentuk partisipasi demokratis yang sah jika mengedukasi & tidak mengandung fitnah', votes: 62 },
-        { id: 'opt-22', text: 'Sebaiknya difasilitasi di dinding mural khusus resmi pemerintah daerah', votes: 41 },
-        { id: 'opt-23', text: 'Kurang tepat karena rentan melanggar ketertiban & kebersihan fasilitas publik', votes: 14 },
+        { id: 'opt-21', text: 'Bentuk partisipasi demokratis yang sah jika mengedukasi & tidak mengandung fitnah', votes: 0 },
+        { id: 'opt-22', text: 'Sebaiknya difasilitasi di dinding mural khusus resmi pemerintah daerah', votes: 0 },
+        { id: 'opt-23', text: 'Kurang tepat karena rentan melanggar ketertiban & kebersihan fasilitas publik', votes: 0 },
       ],
-      totalVotes: 117,
-      voterIds: ['std-2'],
+      totalVotes: 0,
+      voterIds: [],
     },
-    comments: [
-      {
-        id: 'cmt-21',
-        authorId: 'std-23',
-        authorName: 'LIDIA ARNETA MARPAUNG',
-        authorRole: 'siswa',
-        classGroup: 'XI-B',
-        stance: 'solutif',
-        content: 'Buku teks di halaman 58 menegaskan: "Menyampaikan aspirasi dalam bentuk meme ataupun mural memang tidak dilarang sepanjang isinya merupakan propaganda yang mengedukasi masyarakat dan mengedepankan persatuan." Kuncinya ada pada nilai edukasi dan persatuan. Solusinya, sekolah atau pemda bisa menyediakan ruang ekspresi seni kritik publik resmi.',
-        createdAt: '11 Oktober 2026',
-        likes: 12,
-        likedBy: ['std-1', 'std-2'],
-        replies: []
-      }
-    ]
+    comments: []
   },
   {
     id: 'tpc-3',
@@ -661,8 +441,8 @@ export const INITIAL_TOPICS: ForumTopic[] = [
     description: 'Bung Hatta menyatakan Indonesia sejak dahulu telah mempraktikkan demokrasi asli desa (rembug desa di Jawa, kerapatan adat nagari di Sumbar, riungan di Jabar, tudang sipulung di Sulsel). Bagaimana kita mengadopsi nilai musyawarah konsensus ini dalam pemilihan ketua OSIS/MPK sekolah agar tidak terjadi permusuhan antarpendukung calon?',
     caseStudy: 'Dalam Pilkasis sering terjadi kampanye hitam di media sosial antarpendukung kandidat yang berujung pada kerenggangan pertemanan di kelas pascapemilihan.',
     bookReference: 'Buku Teks Pendidikan Pancasila Kelas XI, Bab 2 Subbab A, Halaman 34-35',
-    authorName: 'SERGIO ALVAREZ MARBUN (XI-B)',
-    createdAt: '12 Oktober 2026',
+    authorName: 'Jamal Akmalludin,S.Pd (Guru PPKn)',
+    createdAt: '14 Oktober 2026',
     isPinned: false,
     comments: []
   },
@@ -675,7 +455,7 @@ export const INITIAL_TOPICS: ForumTopic[] = [
     caseStudy: 'Indonesia pernah mengalami bentuk Republik Indonesia Serikat (RIS) pada 27 Desember 1949 s.d. 17 Agustus 1950, namun tuntutan rakyat dari negara-negara bagian (dimulai dari Jawa Timur dan Pasundan) mendesak kembali ke Negara Kesatuan karena federalisme dipandang sebagai siasat pecah belah kolonial.',
     bookReference: 'Buku Teks Pendidikan Pancasila Kelas XI, Bab 2 hlm. 40-42 & 54',
     authorName: 'Sri Cahyati, S.Pd., M.Pd (Penulis Buku)',
-    createdAt: '13 Oktober 2026',
+    createdAt: '14 Oktober 2026',
     isPinned: false,
     comments: []
   }

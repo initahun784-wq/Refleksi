@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <>
                   <GraduationCap className="w-3.5 h-3.5 text-blue-700" />
                   <span className="font-semibold text-blue-900 truncate max-w-[110px] sm:max-w-none">
-                    Drs. Supriyanto (Guru)
+                    Jamal Akmalludin,S.Pd (Guru)
                   </span>
                 </>
               ) : (

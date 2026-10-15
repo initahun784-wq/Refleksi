@@ -188,7 +188,28 @@ export const JournalTab: React.FC<JournalTabProps> = ({
       </div>
 
       {/* Journal Cards List */}
-      {filteredJournals.length === 0 ? (
+      {journals.length === 0 ? (
+        <div className="bg-white rounded-xl p-10 sm:p-14 text-center border border-slate-200 space-y-4">
+          <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center mx-auto">
+            <BookOpen className="w-7 h-7" />
+          </div>
+          <div className="space-y-1.5 max-w-md mx-auto">
+            <h3 className="text-base font-bold text-slate-800">
+              Belum Ada Jurnal Refleksi yang Diunggah
+            </h3>
+            <p className="text-xs text-slate-500 leading-relaxed">
+              Ruang portofolio siap digunakan oleh siswa Kelas XI-B. Peserta didik dapat mengunggah refleksi mingguan model 4F (Peristiwa, Perasaan, Pembelajaran, Aksi Nyata) sesuai materi Buku Teks PPKn.
+            </p>
+          </div>
+          <button
+            onClick={onOpenUpload}
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold rounded-lg shadow-xs transition-colors cursor-pointer"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Unggah Jurnal Refleksi Siswa</span>
+          </button>
+        </div>
+      ) : filteredJournals.length === 0 ? (
         <div className="bg-white rounded-xl p-12 text-center border border-slate-200">
           <BookOpen className="w-10 h-10 text-slate-300 mx-auto mb-3" />
           <h3 className="text-base font-semibold text-slate-800">

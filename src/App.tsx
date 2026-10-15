@@ -27,9 +27,23 @@ import { CheckCircle2, ShieldAlert } from 'lucide-react';
 
 export default function App() {
   // Persistence state
+  // Cleanup old cached version keys with fake mock data
+  useEffect(() => {
+    try {
+      localStorage.removeItem('ppkn_students_xib_v3');
+      localStorage.removeItem('ppkn_journals_xib_v3');
+      localStorage.removeItem('ppkn_topics_xib_v3');
+      localStorage.removeItem('ppkn_students_xib_v2');
+      localStorage.removeItem('ppkn_journals_xib_v2');
+      localStorage.removeItem('ppkn_topics_xib_v2');
+      localStorage.removeItem('ppkn_journals_v2');
+      localStorage.removeItem('ppkn_journals');
+    } catch (e) {}
+  }, []);
+
   // Persistence state for XI-B students
   const [students, setStudents] = useState<Student[]>(() => {
-    const saved = localStorage.getItem('ppkn_students_xib_v3');
+    const saved = localStorage.getItem('ppkn_students_xib_v4');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -44,18 +58,18 @@ export default function App() {
   });
 
   const [journals, setJournals] = useState<JournalEntry[]>(() => {
-    const saved = localStorage.getItem('ppkn_journals_xib_v3');
+    const saved = localStorage.getItem('ppkn_journals_xib_v4');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed)) return parsed;
       } catch (e) {}
     }
     return INITIAL_JOURNALS;
   });
 
   const [topics, setTopics] = useState<ForumTopic[]>(() => {
-    const saved = localStorage.getItem('ppkn_topics_xib_v3');
+    const saved = localStorage.getItem('ppkn_topics_xib_v4');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -79,15 +93,15 @@ export default function App() {
 
   // Sync to localStorage
   useEffect(() => {
-    localStorage.setItem('ppkn_students_xib_v3', JSON.stringify(students));
+    localStorage.setItem('ppkn_students_xib_v4', JSON.stringify(students));
   }, [students]);
 
   useEffect(() => {
-    localStorage.setItem('ppkn_journals_xib_v3', JSON.stringify(journals));
+    localStorage.setItem('ppkn_journals_xib_v4', JSON.stringify(journals));
   }, [journals]);
 
   useEffect(() => {
-    localStorage.setItem('ppkn_topics_xib_v3', JSON.stringify(topics));
+    localStorage.setItem('ppkn_topics_xib_v4', JSON.stringify(topics));
   }, [topics]);
 
   // Toast auto-clear
@@ -199,7 +213,7 @@ export default function App() {
   const handleAddComment = (topicId: string, stance: ArgumentStance, content: string) => {
     const authorId = currentUser.isTeacher ? 'teacher-id' : currentUser.student?.id || 'std-1';
     const authorName = currentUser.isTeacher
-      ? 'Drs. Supriyanto, M.Pd (Guru PPKn)'
+      ? 'Jamal Akmalludin,S.Pd (Guru PPKn)'
       : currentUser.student?.name || 'Siswa Kelas XI';
     const classGroup = currentUser.isTeacher ? undefined : currentUser.student?.classGroup;
 
@@ -241,7 +255,7 @@ export default function App() {
   const handleAddReply = (topicId: string, commentId: string, content: string) => {
     const authorId = currentUser.isTeacher ? 'teacher-id' : currentUser.student?.id || 'std-1';
     const authorName = currentUser.isTeacher
-      ? 'Drs. Supriyanto, M.Pd (Guru PPKn)'
+      ? 'Jamal Akmalludin,S.Pd (Guru PPKn)'
       : currentUser.student?.name || 'Siswa Kelas XI';
 
     const today = new Intl.DateTimeFormat('id-ID', {
@@ -329,7 +343,7 @@ export default function App() {
   const handleSwitchUser = (isTeacher: boolean, student?: Student) => {
     setCurrentUser({ isTeacher, student });
     if (isTeacher) {
-      showToast('Beralih ke Mode Guru PPKn (Drs. Supriyanto, M.Pd).');
+      showToast('Beralih ke Mode Guru PPKn (Jamal Akmalludin,S.Pd).');
     } else if (student) {
       showToast(`Aktif sebagai ${student.name} (${student.classGroup}).`);
     }
@@ -337,6 +351,19 @@ export default function App() {
 
   const handleAddStudent = (newStudent: Student) => {
     setStudents([...students, newStudent]);
+  };
+
+  // Actions: Reset Student Data (Hapus Semua Jawaban Siswa)
+  const handleResetStudentData = () => {
+    setJournals([]);
+    setStudents(INITIAL_STUDENTS);
+    setTopics(INITIAL_TOPICS);
+    try {
+      localStorage.removeItem('ppkn_journals_xib_v4');
+      localStorage.removeItem('ppkn_students_xib_v4');
+      localStorage.removeItem('ppkn_topics_xib_v4');
+    } catch (e) {}
+    showToast('Seluruh jawaban jurnal dan skor siswa berhasil dihapus & dikosongkan.');
   };
 
   // Stats calculation
@@ -404,6 +431,7 @@ export default function App() {
               students={students}
               journals={journals}
               onSelectJournal={(j) => setSelectedJournal(j)}
+              onResetStudentData={handleResetStudentData}
             />
           )}
         </div>

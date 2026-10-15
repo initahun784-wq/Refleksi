@@ -108,7 +108,7 @@ export const ForumTab: React.FC<ForumTabProps> = ({
       caseStudy: newCaseStudy.trim(),
       bookReference: 'Diskusi Siswa Kelas XI',
       authorName: currentUser.isTeacher
-        ? 'Drs. Supriyanto, M.Pd (Guru PPKn)'
+        ? 'Jamal Akmalludin,S.Pd (Guru PPKn)'
         : `${currentUser.student?.name} (${currentUser.student?.classGroup})`,
       createdAt: today,
       poll: pollData,
