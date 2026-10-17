@@ -158,7 +158,7 @@ export const PillarsTab: React.FC = () => {
           Pusat Konsep Demokrasi & Konstitusi UUD NRI 1945
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-3xl">
-          Disusun berdasarkan karya Jamal Akmalludin,S.Pd. Memuat materi periodisasi konstitusi, 
+          Disusun berdasarkan (Kemendikbudristek & BPIP 2023) karya Sri Cahyati, Siti Nurjanah, dan Ali Usman. Memuat materi periodisasi konstitusi, 
           amandemen UUD 1945, 10 pilar demokrasi Prof. Ahmad Sanusi, serta instrumen penilaian diri sikap demokratis (Tabel 2.5).
         </p>
 

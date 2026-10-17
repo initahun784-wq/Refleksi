@@ -33,8 +33,7 @@ export const Hero: React.FC<HeroProps> = ({
             </h1>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">
-              Platform refleksi dan dialog kewarganegaraan berdasarkan <strong>Buku Teks Utama Pendidikan Pancasila Kelas XI</strong> karya 
-              jamal Akmalludin,S. Pd. Memadukan refleksi mingguan Model 4F dengan mimbar musyawarah deliberatif 
+              Platform refleksi dan dialog kewarganegaraan berdasarkan <strong>Buku Teks Utama Pendidikan Pancasila Kelas XI</strong> (Kemendikbudristek & BPIP 2023) karya Sri Cahyati, Siti Nurjanah, dan Ali Usman. Memadukan refleksi mingguan Model 4F dengan mimbar musyawarah deliberatif 
               seputar dinamika UUD NRI Tahun 1945 di era keterbukaan informasi.
             </p>
 
