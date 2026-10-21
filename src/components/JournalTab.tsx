@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, Plus, BookOpen, User, Calendar, CheckCircle2, ChevronRight, FileText, Sparkles } from 'lucide-react';
+import { Search, Filter, Plus, BookOpen, User, Calendar, CheckCircle2, ChevronRight, FileText, Sparkles, RotateCw } from 'lucide-react';
 import { JournalEntry, Student } from '../types';
 
 interface JournalTabProps {
@@ -7,6 +7,7 @@ interface JournalTabProps {
   currentUser: { isTeacher: boolean; student?: Student };
   onSelectJournal: (journal: JournalEntry) => void;
   onOpenUpload: () => void;
+  onForceSyncLocalJournals?: () => void;
 }
 
 export const JournalTab: React.FC<JournalTabProps> = ({
@@ -14,6 +15,7 @@ export const JournalTab: React.FC<JournalTabProps> = ({
   currentUser,
   onSelectJournal,
   onOpenUpload,
+  onForceSyncLocalJournals,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedChapter, setSelectedChapter] = useState<'all' | 'Bab 1' | 'Bab 2' | 'Bab 3' | 'Bab 4'>('all');
@@ -83,13 +85,26 @@ export const JournalTab: React.FC<JournalTabProps> = ({
           </p>
         </div>
 
-        <button
-          onClick={onOpenUpload}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm font-semibold rounded-lg shadow-xs transition-colors shrink-0 cursor-pointer self-start sm:self-auto"
-        >
-          <Plus className="w-4 h-4" />
-          <span>+ Tulis / Unggah Jurnal Pekan Ini</span>
-        </button>
+        <div className="flex items-center gap-2.5 shrink-0 self-start sm:self-auto">
+          {!currentUser.isTeacher && onForceSyncLocalJournals && (
+            <button
+              onClick={onForceSyncLocalJournals}
+              className="inline-flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs sm:text-sm font-medium rounded-lg shadow-2xs transition-colors cursor-pointer"
+              title="Kirim catatan tersimpan di HP ini ke Guru"
+            >
+              <RotateCw className="w-3.5 h-3.5 text-blue-600" />
+              <span>Sinkronkan ke Guru</span>
+            </button>
+          )}
+
+          <button
+            onClick={onOpenUpload}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm font-semibold rounded-lg shadow-xs transition-colors shrink-0 cursor-pointer"
+          >
+            <Plus className="w-4 h-4" />
+            <span>+ Tulis Jurnal</span>
+          </button>
+        </div>
       </div>
 
       {/* Control Filter Deck */}

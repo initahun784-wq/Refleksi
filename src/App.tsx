@@ -577,6 +577,76 @@ export default function App() {
     setStudents([...students, newStudent]);
   };
 
+  // Manual trigger for students to sync any locally cached journals
+  const handleForceSyncLocalJournals = async () => {
+    const localJournalMap = new Map<string, JournalEntry>();
+    const candidateKeys = [
+      'ppkn_journals_xib_v4',
+      'ppkn_journals_xib_v3',
+      'ppkn_journals_xib_v2',
+      'ppkn_journals_xib',
+      'ppkn_journals',
+      'journals',
+    ];
+
+    candidateKeys.forEach((k) => {
+      try {
+        const raw = localStorage.getItem(k);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            parsed.forEach((j) => {
+              if (j && j.id && j.studentName) {
+                localJournalMap.set(j.id, j);
+              }
+            });
+          }
+        }
+      } catch (e) {}
+    });
+
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.includes('journal') || key.includes('xib') || key.includes('ppkn'))) {
+          const raw = localStorage.getItem(key);
+          if (raw) {
+            try {
+              const parsed = JSON.parse(raw);
+              if (Array.isArray(parsed)) {
+                parsed.forEach((j) => {
+                  if (j && j.id && j.studentName && j.reflection) {
+                    localJournalMap.set(j.id, j);
+                  }
+                });
+              } else if (parsed && parsed.id && parsed.studentName && parsed.reflection) {
+                localJournalMap.set(parsed.id, parsed);
+              }
+            } catch (e) {}
+          }
+        }
+      }
+    } catch (e) {}
+
+    const localList = Array.from(localJournalMap.values());
+    if (localList.length === 0) {
+      showToast('Tidak ada data jurnal lokal di browser HP ini. Pastikan membuka di link & browser yang sama.');
+      return;
+    }
+
+    let successCount = 0;
+    for (const j of localList) {
+      try {
+        await setDoc(doc(db, 'journals', j.id), j, { merge: true });
+        successCount++;
+      } catch (err) {
+        console.error('Manual sync failed for journal:', j.id, err);
+      }
+    }
+
+    showToast(`Berhasil menyinkronkan ${successCount} jurnal ke database Guru!`);
+  };
+
   // Stats calculation
   const totalCommentsCount = topics.reduce((acc, t) => acc + t.comments.length, 0);
   const gradedJournalsCount = journals.filter((j) => j.status === 'graded').length;
@@ -623,6 +693,7 @@ export default function App() {
               currentUser={currentUser}
               onSelectJournal={(j) => setSelectedJournal(j)}
               onOpenUpload={() => setIsUploadModalOpen(true)}
+              onForceSyncLocalJournals={handleForceSyncLocalJournals}
             />
           )}
 
@@ -648,6 +719,7 @@ export default function App() {
                 onSelectJournal={(j) => setSelectedJournal(j)}
                 onLockTeacher={handleLockTeacher}
                 cloudStatus={cloudStatus}
+                onOpenUpload={() => setIsUploadModalOpen(true)}
               />
             ) : null
           )}
@@ -667,6 +739,7 @@ export default function App() {
         isOpen={isUploadModalOpen}
         onClose={() => setIsUploadModalOpen(false)}
         currentUser={currentUser}
+        students={students}
         onSaveJournal={handleSaveJournal}
       />
 

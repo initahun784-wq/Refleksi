@@ -7,6 +7,7 @@ interface JournalUploadModalProps {
   isOpen: boolean;
   onClose: () => void;
   currentUser: { isTeacher: boolean; student?: Student };
+  students?: Student[];
   onSaveJournal: (newJournal: JournalEntry) => void;
 }
 
@@ -14,10 +15,14 @@ export const JournalUploadModal: React.FC<JournalUploadModalProps> = ({
   isOpen,
   onClose,
   currentUser,
+  students = [],
   onSaveJournal,
 }) => {
   if (!isOpen) return null;
 
+  const [selectedStudentId, setSelectedStudentId] = useState<string>(() => {
+    return currentUser.student?.id || (students[0]?.id) || 'std-1';
+  });
   const [weekNumber, setWeekNumber] = useState<number>(6);
   const [chapter, setChapter] = useState<'Bab 1' | 'Bab 2' | 'Bab 3' | 'Bab 4'>('Bab 2');
   const [activityRef, setActivityRef] = useState<string>('Aktivitas 2.8 (Buku hlm. 61-62)');
@@ -29,6 +34,47 @@ export const JournalUploadModal: React.FC<JournalUploadModalProps> = ({
   const [selectedSila, setSelectedSila] = useState<PancasilaSila[]>([4]);
   const [attachmentName, setAttachmentName] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string>('');
+
+  // Draft recovery from localStorage
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem('ppkn_journal_draft_xib');
+      if (saved) {
+        const d = JSON.parse(saved);
+        if (d.topicTitle) setTopicTitle(d.topicTitle);
+        if (d.facts) setFacts(d.facts);
+        if (d.feelings) setFeelings(d.feelings);
+        if (d.findings) setFindings(d.findings);
+        if (d.future) setFuture(d.future);
+        if (d.weekNumber) setWeekNumber(d.weekNumber);
+        if (d.chapter) setChapter(d.chapter);
+        if (d.activityRef) setActivityRef(d.activityRef);
+        if (d.selectedSila) setSelectedSila(d.selectedSila);
+      }
+    } catch (e) {}
+  }, []);
+
+  // Autosave draft while typing
+  React.useEffect(() => {
+    if (topicTitle || facts || feelings || findings || future) {
+      try {
+        localStorage.setItem(
+          'ppkn_journal_draft_xib',
+          JSON.stringify({
+            topicTitle,
+            facts,
+            feelings,
+            findings,
+            future,
+            weekNumber,
+            chapter,
+            activityRef,
+            selectedSila,
+          })
+        );
+      } catch (e) {}
+    }
+  }, [topicTitle, facts, feelings, findings, future, weekNumber, chapter, activityRef, selectedSila]);
 
   const toggleSila = (sila: PancasilaSila) => {
     if (selectedSila.includes(sila)) {
@@ -67,13 +113,17 @@ export const JournalUploadModal: React.FC<JournalUploadModalProps> = ({
       year: 'numeric',
     }).format(new Date());
 
+    const activeStudent = currentUser.isTeacher
+      ? students.find((s) => s.id === selectedStudentId) || currentUser.student
+      : currentUser.student;
+
     const newEntry: JournalEntry = {
       id: `jnl-${Date.now()}`,
       weekNumber,
       date: today,
-      studentId: currentUser.student?.id || 'std-1',
-      studentName: currentUser.student?.name || 'AL FATHIR FAHREZI PUTRA WIGUNA',
-      classGroup: currentUser.student?.classGroup || 'XI-B',
+      studentId: activeStudent?.id || 'std-1',
+      studentName: activeStudent?.name || 'AL FATHIR FAHREZI PUTRA WIGUNA',
+      classGroup: activeStudent?.classGroup || 'XI-B',
       chapter,
       activityRef: activityRef.trim() || undefined,
       topicTitle: topicTitle.trim(),
@@ -87,6 +137,10 @@ export const JournalUploadModal: React.FC<JournalUploadModalProps> = ({
       attachmentName: attachmentName || undefined,
       status,
     };
+
+    try {
+      localStorage.removeItem('ppkn_journal_draft_xib');
+    } catch (e) {}
 
     onSaveJournal(newEntry);
     onClose();
@@ -110,7 +164,11 @@ export const JournalUploadModal: React.FC<JournalUploadModalProps> = ({
               Unggah Jurnal Refleksi Mingguan (Buku Teks Pendidikan Pancasila Kelas XI)
             </h3>
             <p className="text-xs text-slate-500">
-              Peserta Didik: <strong className="text-slate-800">{currentUser.student?.name || 'AL FATHIR FAHREZI PUTRA WIGUNA'}</strong> ({currentUser.student?.classGroup || 'XI-B'})
+              {currentUser.isTeacher ? (
+                <span>Mode Guru PPKn: Menginputkan data refleksi peserta didik</span>
+              ) : (
+                <span>Peserta Didik: <strong className="text-slate-800">{currentUser.student?.name || 'AL FATHIR FAHREZI PUTRA WIGUNA'}</strong> ({currentUser.student?.classGroup || 'XI-B'})</span>
+              )}
             </p>
           </div>
           <button
@@ -124,6 +182,28 @@ export const JournalUploadModal: React.FC<JournalUploadModalProps> = ({
 
         {/* Form Body */}
         <div className="p-6 sm:p-8 space-y-6 max-h-[80vh] overflow-y-auto">
+          {currentUser.isTeacher && students.length > 0 && (
+            <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <label className="block text-xs font-bold text-blue-900 mb-1">
+                Pilih Nama Siswa Kelas XI-B:
+              </label>
+              <select
+                value={selectedStudentId}
+                onChange={(e) => setSelectedStudentId(e.target.value)}
+                className="w-full text-xs sm:text-sm bg-white border border-blue-300 rounded-md px-3 py-2 font-medium text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              >
+                {students.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    #{s.absenNumber} - {s.name} ({s.classGroup})
+                  </option>
+                ))}
+              </select>
+              <p className="text-2xs text-blue-700 mt-1">
+                Bapak Jamal dapat menginputkan jawaban langsung atas nama siswa yang belum terunggah dari HP.
+              </p>
+            </div>
+          )}
+
           {errorMsg && (
             <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg flex items-center gap-2 text-xs text-rose-800">
               <AlertCircle className="w-4 h-4 shrink-0" />

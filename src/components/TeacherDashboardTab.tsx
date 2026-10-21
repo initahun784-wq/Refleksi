@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, Download, CheckCircle2, AlertCircle, FileSpreadsheet, Eye, Printer, Users, Search, Hash, Lock } from 'lucide-react';
+import { Award, Download, CheckCircle2, AlertCircle, FileSpreadsheet, Eye, Printer, Users, Search, Hash, Lock, Plus } from 'lucide-react';
 import { Student, JournalEntry } from '../types';
 
 interface TeacherDashboardTabProps {
@@ -8,6 +8,7 @@ interface TeacherDashboardTabProps {
   onSelectJournal: (journal: JournalEntry) => void;
   onLockTeacher?: () => void;
   cloudStatus?: 'connecting' | 'connected' | 'error';
+  onOpenUpload?: () => void;
 }
 
 export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
@@ -16,6 +17,7 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
   onSelectJournal,
   onLockTeacher,
   cloudStatus = 'connected',
+  onOpenUpload,
 }) => {
   const [selectedClass, setSelectedClass] = useState<'all' | 'XI-B'>('XI-B');
   const [searchStudent, setSearchStudent] = useState<string>('');
@@ -144,6 +146,15 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
             >
               <Lock className="w-3.5 h-3.5 text-slate-500" />
               <span>Kunci Akses</span>
+            </button>
+          )}
+          {onOpenUpload && (
+            <button
+              onClick={onOpenUpload}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm font-semibold rounded-lg shadow-xs transition-colors cursor-pointer"
+            >
+              <Plus className="w-4 h-4" />
+              <span>+ Input Jurnal Siswa</span>
             </button>
           )}
           <button
