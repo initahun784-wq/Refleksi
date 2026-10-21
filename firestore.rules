@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny Catch-all for unlisted collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    // Koleksi Jurnal Siswa (Terbuka untuk membaca dan menyimpan jurnal kelas XI-B)
+    match /journals/{journalId} {
+      allow read: if true;
+      allow create, update: if isValidId(journalId)
+        && incoming().id is string
+        && incoming().studentName is string;
+      // Proteksi penghapusan: catatan jurnal portofolio tidak boleh sembarangan dihapus
+      allow delete: if false;
+    }
+
+    // Koleksi Topik Forum Demokrasi & Polling
+    match /forum_topics/{topicId} {
+      allow read: if true;
+      allow create, update: if isValidId(topicId)
+        && incoming().id is string;
+      allow delete: if false;
+    }
+
+    // Endpoint tes koneksi
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

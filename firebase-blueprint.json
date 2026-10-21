@@ -1,0 +1,147 @@
+{
+  "entities": {
+    "JournalEntry": {
+      "title": "JournalEntry",
+      "description": "Refleksi mingguan siswa PPKn model 4F (Peristiwa, Perasaan, Pembelajaran, Aksi Nyata)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ID of journal"
+        },
+        "weekNumber": {
+          "type": "number",
+          "description": "Pekan ke berapa (1-6)"
+        },
+        "date": {
+          "type": "string",
+          "description": "Tanggal pembuatan jurnal"
+        },
+        "studentId": {
+          "type": "string",
+          "description": "ID siswa kelas XI-B"
+        },
+        "studentName": {
+          "type": "string",
+          "description": "Nama lengkap siswa"
+        },
+        "classGroup": {
+          "type": "string",
+          "description": "Kelas siswa, misal XI-B"
+        },
+        "chapter": {
+          "type": "string",
+          "description": "Bab materi PPKn"
+        },
+        "topicTitle": {
+          "type": "string",
+          "description": "Judul materi / topik refleksi"
+        },
+        "activityRef": {
+          "type": "string",
+          "description": "Rujukan aktivitas di buku teks"
+        },
+        "reflection": {
+          "type": "object",
+          "description": "Refleksi 4F: facts, feelings, findings, future"
+        },
+        "relatedSila": {
+          "type": "array",
+          "description": "Daftar sila Pancasila yang terkait (1-5)"
+        },
+        "attachmentName": {
+          "type": "string",
+          "description": "Nama file lampiran"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "submitted", "graded"],
+          "description": "Status pengumpulan"
+        },
+        "score": {
+          "type": "number",
+          "description": "Nilai akhir (0-100)"
+        },
+        "rubric": {
+          "type": "object",
+          "description": "Rubrik penilaian 4 kriteria Tabel 2.4"
+        },
+        "teacherFeedback": {
+          "type": "string",
+          "description": "Umpan balik dan catatan dari guru"
+        },
+        "teacherFeedbackDate": {
+          "type": "string",
+          "description": "Tanggal guru memberikan nilai"
+        }
+      },
+      "required": ["id", "studentId", "studentName", "classGroup", "topicTitle", "status"]
+    },
+    "ForumTopic": {
+      "title": "ForumTopic",
+      "description": "Topik diskusi demokrasi interaktif dan studi kasus kelas XI",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Topic ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Judul topik diskusi"
+        },
+        "chapter": {
+          "type": "string",
+          "description": "Bab referensi"
+        },
+        "subtopic": {
+          "type": "string",
+          "description": "Subtopik bahasan"
+        },
+        "description": {
+          "type": "string",
+          "description": "Deskripsi isu"
+        },
+        "caseStudy": {
+          "type": "string",
+          "description": "Studi kasus buku"
+        },
+        "bookReference": {
+          "type": "string",
+          "description": "Rujukan halaman buku"
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Nama pembuat topik"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Tanggal topik dibuat"
+        },
+        "isPinned": {
+          "type": "boolean",
+          "description": "Status disematkan"
+        },
+        "poll": {
+          "type": "object",
+          "description": "Data polling"
+        },
+        "comments": {
+          "type": "array",
+          "description": "Daftar komentar dan argumen"
+        }
+      },
+      "required": ["id", "title", "chapter", "description"]
+    }
+  },
+  "firestore": {
+    "/journals/{journalId}": {
+      "schema": "JournalEntry",
+      "description": "Koleksi jurnal refleksi siswa kelas XI-B yang terhubung ke dashboard guru"
+    },
+    "/forum_topics/{topicId}": {
+      "schema": "ForumTopic",
+      "description": "Koleksi topik dan diskusi forum demokrasi kelas XI"
+    }
+  }
+}

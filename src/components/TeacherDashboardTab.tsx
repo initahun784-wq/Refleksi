@@ -7,6 +7,7 @@ interface TeacherDashboardTabProps {
   journals: JournalEntry[];
   onSelectJournal: (journal: JournalEntry) => void;
   onLockTeacher?: () => void;
+  cloudStatus?: 'connecting' | 'connected' | 'error';
 }
 
 export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
@@ -14,6 +15,7 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
   journals,
   onSelectJournal,
   onLockTeacher,
+  cloudStatus = 'connected',
 }) => {
   const [selectedClass, setSelectedClass] = useState<'all' | 'XI-B'>('XI-B');
   const [searchStudent, setSearchStudent] = useState<string>('');
@@ -100,16 +102,36 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="text-xs font-semibold text-blue-800 tracking-wide mb-1">
-            <span>ASESMEN PORTOFOLIO KELAS XI-B</span>
-            <span className="mx-2" aria-hidden="true">·</span>
-            <span>GURU PENGAMPU: JAMAL AKMALLUDIN,S.PD</span>
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+            <div className="text-xs font-semibold text-blue-800 tracking-wide">
+              <span>ASESMEN PORTOFOLIO KELAS XI-B</span>
+              <span className="mx-2" aria-hidden="true">·</span>
+              <span>GURU PENGAMPU: JAMAL AKMALLUDIN,S.PD</span>
+            </div>
+            {cloudStatus === 'connected' && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-2xs font-semibold rounded-full shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Cloud Terhubung · Real-time Aktif</span>
+              </span>
+            )}
+            {cloudStatus === 'connecting' && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-amber-50 border border-amber-200 text-amber-800 text-2xs font-semibold rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                <span>Menghubungkan Cloud...</span>
+              </span>
+            )}
+            {cloudStatus === 'error' && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-slate-100 border border-slate-300 text-slate-700 text-2xs font-semibold rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                <span>Cache Lokal Aktif</span>
+              </span>
+            )}
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             Dashboard Penilaian Portofolio Guru PPKn
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-            Guru: <strong className="text-slate-800">Jamal Akmalludin,S.Pd</strong> · Daftar 41 Peserta Didik Kelas XI-B, pemantauan pengunggahan jurnal model 4F, dan rubrik bernalar kritis (Tabel 2.4).
+            Guru: <strong className="text-slate-800">Jamal Akmalludin,S.Pd</strong> · Daftar 41 Peserta Didik Kelas XI-B, pemantauan pengunggahan jurnal model 4F, dan rubrik bernalar kritis (Tabel 2.4). Jawaban siswa langsung tersinkronisasi otomatis secara online.
           </p>
         </div>
 
@@ -138,6 +160,21 @@ export const TeacherDashboardTab: React.FC<TeacherDashboardTabProps> = ({
             <Printer className="w-4 h-4" />
             <span>Cetak Rekap</span>
           </button>
+        </div>
+      </div>
+
+      {/* Guidance Banner: Data Safety & Sync */}
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-blue-900 shadow-2xs">
+        <div className="flex items-start gap-2.5">
+          <CheckCircle2 className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
+          <div>
+            <p className="font-bold text-blue-950 text-sm">
+              Status Jawaban Siswa & Sinkronisasi Cloud
+            </p>
+            <p className="text-blue-800 text-xs mt-0.5 leading-relaxed">
+              Jawaban yang sudah diisi siswa di HP masing-masing <strong>tetap aman dan tidak hilang</strong>. Begitu siswa membuka link aplikasi ini di HP mereka, sistem secara otomatis mendeteksi data dari memori browser HP mereka dan langsung mengunggahnya ke database cloud ini secara <em>real-time</em> tanpa perlu mengisi ulang.
+            </p>
+          </div>
         </div>
       </div>
 
